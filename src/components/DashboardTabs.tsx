@@ -1,7 +1,21 @@
-export function DashboardTabs() {
+// ไฟล์: src/components/DashboardTabs.tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import OverviewCards from './OverviewCards';
+import CategoryCards from './CategoryCards';
+
+export default function DashboardTabs() {
   return (
-    <div className="w-full">
-      <h1>This is the Dashboard Tabs Component</h1>
-    </div>
+    <Tabs defaultValue="overview" className="w-full">
+      <TabsList className="mb-4 bg-gray-100">
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="category">By Category</TabsTrigger>
+      </TabsList>
+      <TabsContent value="overview">
+        <OverviewCards />
+      </TabsContent>
+      <TabsContent value="category">
+        <CategoryCards />
+      </TabsContent>
+    </Tabs>
   );
 }

@@ -1,72 +1,42 @@
-import { useItemStore } from "@/store/dataStore";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Trash } from "lucide-react";
+// ไฟล์: src/components/ItemList.tsx
+import { useDataStore } from '@/store/dataStore';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
+import { Trash2 } from 'lucide-react';
 
-export function ItemList() {
-  const { expenses } = useItemStore();
+export default function ItemList() {
+  const expenses = useDataStore((state) => state.expenses);
+  const deleteExpense = useDataStore((state) => state.deleteExpense);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Recent Expenses</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Date</TableHead>
-              <TableHead>Title</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
-              <TableHead className="text-right"></TableHead>
+    <div className="border rounded-lg p-4 bg-white mt-8">
+      <h3 className="font-semibold mb-4">Recent Expenses</h3>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Date</TableHead>
+            <TableHead>Title</TableHead>
+            <TableHead>Category</TableHead>
+            <TableHead>Amount</TableHead>
+            <TableHead></TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {expenses.map((expense) => (
+            <TableRow key={expense.id}>
+              <TableCell className="text-gray-500">{expense.date}</TableCell>
+              <TableCell>{expense.title}</TableCell>
+              <TableCell className="text-gray-500">{expense.category}</TableCell>
+              <TableCell className="font-medium">฿{expense.amount.toFixed(2)}</TableCell>
+              <TableCell className="text-right">
+                <Button variant="destructive" size="sm" onClick={() => deleteExpense(expense.id)}>
+                  <Trash2 className="w-4 h-4 mr-1" /> Delete
+                </Button>
+              </TableCell>
             </TableRow>
-          </TableHeader>
-          <TableBody>
-            {expenses.length === 0 ? (
-              <TableRow>
-                <TableCell
-                  colSpan={5}
-                  className="text-center text-muted-foreground py-6"
-                >
-                  No expenses recorded yet.
-                </TableCell>
-              </TableRow>
-            ) : (
-              // replace the following hardcoded row with the dynamic mapping of data items
-              <TableRow>
-                <TableCell className="text-muted-foreground">
-                  2026-10-05
-                </TableCell>
-                <TableCell className="font-medium">ซื้อของ 7-11</TableCell>
-                <TableCell>
-                  <Badge variant="outline">Food</Badge>
-                </TableCell>
-                <TableCell className="text-right font-semibold">฿120</TableCell>
-                <TableCell className="text-right">
-                  <Button
-                    className="text-white bg-red-500 hover:bg-red-600 text-white"
-                    variant="ghost"
-                    size="sm"
-                  >
-                    <Trash className="h-4 w-4" />
-                    Delete
-                  </Button>
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 }

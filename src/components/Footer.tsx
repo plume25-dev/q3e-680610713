@@ -1,21 +1,13 @@
-import { StudentInfo } from "./StudentInfo";
+// ไฟล์: src/components/Footer.tsx
+import StudentInfo from './StudentInfo';
 
-export function Footer() {
+export default function Footer() {
   return (
-    <footer className="w-full">
-      <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 lg:py-16">
-        <div className="mt-12 border-t pt-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
-          {/* Changed to flex-row, centered items, and wrapped text wrap settings */}
-          <div className="flex flex-row items-center justify-center gap-4 flex-wrap text-center">
-            {/* insert Drawer of student information here */}
-            <StudentInfo />
-            <span className="text-sm text-muted-foreground whitespace-nowrap">
-              &copy; {new Date().getFullYear()} CPE207 Corp. All rights
-              reserved.
-            </span>
-          </div>
-        </div>
+    <div className="mt-8 pt-4 border-t flex items-center justify-between text-sm">
+      <div className="flex items-center gap-2">
+        <StudentInfo />
+        <span className="text-gray-400">© 2026 CPE207 Corp. All rights reserved.</span>
       </div>
-    </footer>
+    </div>
   );
 }

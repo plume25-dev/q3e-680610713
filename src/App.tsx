@@ -1,36 +1,35 @@
-import { AddItemDialog } from "./components/AddItemDialog";
-import { ItemList } from "./components/ItemList";
-import { Footer } from "./components/Footer";
-import { OverviewCards } from "./components/OverviewCards";
+// ไฟล์: src/App.tsx
+import DashboardTabs from '@/components/DashboardTabs';
+import ItemList from '@/components/ItemList';
+import AddItemDialog from '@/components/AddItemDialog';
+import Footer from '@/components/Footer';
 
-export default function App() {
+function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50">
-      {/* Main Content Area */}
-      <main className="flex-1 p-6 md:p-10">
-        <div className="max-w-5xl mx-auto space-y-8">
-          {/* Header Layout wrapper */}
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold tracking-tight">
-                Expenditure Dashboard
-              </h1>
-              <p className="text-muted-foreground">
-                Track your everyday expenses and budget easily.
-              </p>
-            </div>
-            <AddItemDialog />
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8 font-sans flex justify-center">
+      <div className="w-full max-w-4xl bg-white p-6 rounded-xl shadow-sm border">
+        
+      
+        <div className="flex justify-between items-start mb-8">
+          <div>
+            <h1 className="text-2xl font-bold">Expenditure Dashboard</h1>
+            <p className="text-gray-500 text-sm mt-1">Track your everyday expenses and budget easily.</p>
           </div>
-
-          {/* Put OverviewCards and CategoryCards under DashboardTabs */}
-          {/* And then use DashboardTabs here instead */}
-          <OverviewCards />
-          <ItemList />
+          <AddItemDialog />
         </div>
-      </main>
 
-      {/* Footer stays at the very bottom of the viewport if content is short */}
-      <Footer />
+        
+        <DashboardTabs />
+
+       
+        <ItemList />
+
+        
+        <Footer />
+        
+      </div>
     </div>
   );
 }
+
+export default App;
