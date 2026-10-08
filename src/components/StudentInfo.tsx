@@ -13,10 +13,9 @@ export default function StudentInfo() {
             <DrawerTitle>ข้อมูลนักศึกษา</DrawerTitle>
             <p className="text-sm text-gray-500">Student information</p>
             
-            {/* 📸 ส่วนที่เพิ่มรูปภาพเข้ามาใหม่ */}
             <div className="mt-4 flex justify-center">
               <img 
-                src="myimg/IMG_8163.jpg" // ดึงรูป Avatar จาก GitHub ของคุณโดยตรง
+                src="myimg/IMG_8163.jpg" 
                 alt="Warat Wongwichit" 
                 className="w-32 h-32 rounded-full object-cover border-2 border-gray-200 shadow-sm"
               />
