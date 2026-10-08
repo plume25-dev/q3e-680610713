@@ -1,5 +1,6 @@
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
 import { Badge } from '@/components/ui/badge';
+import profileImg from './myimg/IMG_8163.JPG';
 
 export default function StudentInfo() {
   return (
@@ -15,7 +16,7 @@ export default function StudentInfo() {
             
             <div className="mt-4 flex justify-center">
               <img 
-                src="myimg/IMG_8163.jpg" 
+                src={profileImg}
                 alt="Warat Wongwichit" 
                 className="w-32 h-32 rounded-full object-cover border-2 border-gray-200 shadow-sm"
               />
